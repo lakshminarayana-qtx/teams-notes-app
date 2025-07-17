@@ -1,0 +1,4 @@
+node_modules/
+.env
+.DS_Store
+# dist/   <-- make sure this is commented or removed
