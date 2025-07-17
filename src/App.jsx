@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { GEMINI_API_KEY } from '../config.js';
 
 const defaultPrompts = {
-  mom: "Generate MoM from the transcript:",
-  actionItems: "List action items from the transcript:",
-  summary: "Summarize the meeting in 3 bullets:",
-  notes: "Extract key notes from this meeting transcript:",
+  mom: "Generate MoM from the transcript :",
+  actionItems: "List action items from the transcript :",
+  summary: "Summarize the meeting in 3 bullets :",
+  notes: "Extract key notes from this meeting transcript :",
 };
 
 export default function App() {
