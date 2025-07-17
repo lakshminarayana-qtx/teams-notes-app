@@ -1,36 +1,34 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy Vite App
 
 on:
   push:
     branches:
-      - main  # or 'master', depending on your default branch
+      - main
 
 permissions:
-  contents: write  # This is REQUIRED to allow git push in the workflow
+  contents: write  # Required if your repo restricts token permissions
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true  # Required so GitHub Actions can push to gh-pages
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build the Vite app
         run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # Deploy to this branch
-          folder: dist      # Your Vite build output folder
+          branch: gh-pages
+          folder: dist
