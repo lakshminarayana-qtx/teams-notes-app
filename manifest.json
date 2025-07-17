@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.11",
+  "version": "1.0.0",
+  "id": "your-app-id-guid",
+  "packageName": "com.yourdomain.momgenerator",
+  "developer": {
+    "name": "Your Name",
+    "websiteUrl": "https://yourwebsite.com",
+    "privacyUrl": "https://yourwebsite.com/privacy",
+    "termsOfUseUrl": "https://yourwebsite.com/terms"
+  },
+  "name": {
+    "short": "MoM Generator",
+    "full": "Teams Minutes of Meeting Generator"
+  },
+  "description": {
+    "short": "Generate MoM, summaries, notes, action items",
+    "full": "Uses Graph API and Gemini LLM to generate meeting insights."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#FFFFFF",
+  "staticTabs": [{
+    "entityId": "momTab",
+    "name": "MoM Generator",
+    "contentUrl": "https://yourappurl.com/index.html",
+    "websiteUrl": "https://yourappurl.com",
+    "scopes": ["personal"]
+  }],
+  "permissions": ["identity", "messageTeamMembers"],
+  "validDomains": ["yourappurl.com"]
+}
