@@ -1,12 +1,12 @@
-name: Deploy React App to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # or master
-      
+      - main  # or 'master', depending on your default branch
+
 permissions:
-  contents: write
+  contents: write  # This is REQUIRED to allow git push in the workflow
 
 jobs:
   build:
@@ -14,21 +14,23 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # Required so GitHub Actions can push to gh-pages
 
-      - name: Set up Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build app
+      - name: Build
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          branch: gh-pages  # Deploy to this branch
+          folder: dist      # Your Vite build output folder
